@@ -13,12 +13,10 @@ if(isset($_FILES) && empty($_FILES) === false) :
     
     try {
         $upload = new fileHandler('userfile'); 
-        $upload->checkFile();
-        $upload->moveFile();
-
-        //fileHandler::checkFile();
+        $upload->checkFile('pptx');
+        $file = $upload->moveFile();
+        echo "New file is: ".$file."<br />";
     }
-    
     
     catch (Exception $e) {
         $eMsg =  'PowerPoint Template Failure: ' .$e->getMessage() . '; Failure trace: '. $e->getTraceAsString();
@@ -26,6 +24,8 @@ if(isset($_FILES) && empty($_FILES) === false) :
         echo 'Template upload failure: '. $e->getMessage().'<br />';
     }
 
+    
+    
 endif;
 
 ?>
